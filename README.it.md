@@ -1,21 +1,32 @@
-# reports – sintesi in italiano
+# knowbe4-training-report – sintesi in italiano
 
-Strumenti di reportistica offline per programmi di security awareness e di gestione del rischio umano.
+Un unico file HTML che trasforma l'**export dettagliato della formazione KnowBe4** in un cruscotto di completamento e in un report Excel formattato. Funziona **offline nel browser**: nessun server, nessuna installazione, nessun dato esce dal PC.
 
-Ogni strumento trasforma l'export di una piattaforma di sicurezza in un cruscotto e in un report da consegnare al cliente, **in locale nel browser**: un unico file HTML, nessun server, nessuna installazione, nessun dato che esce dal PC.
+## Cosa mostra
 
-## Strumenti
+- completamento della formazione per **tenant** e per il **gruppo** nel suo insieme;
+- utenti con formazione completa e **utenti in regola** (nessun corso scaduto aperto);
+- **organi di gestione**, scelti tra i gruppi KnowBe4;
+- **PPP** medio per tenant e per persona;
+- **migliori utenti** del gruppo e di ogni tenant, con la regola di punteggio esplicitata;
+- **piano di erogazione**: corsi previsti mese per mese confrontati con quelli presenti nell'export.
 
-| Strumento | Cosa legge | Cosa produce |
-|---|---|---|
-| [knowbe4-training-report](knowbe4-training-report/README.it.md) | export dettagliato della formazione KnowBe4 | completamento per tenant e gruppo, organi di gestione, PPP, migliori utenti, piano di erogazione; report Excel formattato |
+Il report Excel si apre con un foglio *Cruscotto* e contiene piano, organi di gestione, classifiche, utenti e il registro completo per l'audit.
 
-## Regole comuni
+## Riservatezza
 
-- Funzionamento offline garantito da una Content Security Policy che blocca la rete.
-- Nessun dato reale nel repository: export e report sono esclusi da `.gitignore`, le demo usano dati fittizi.
-- Ogni strumento mostra come ha interpretato i dati, per poterli verificare sulla console di origine.
-- Build riproducibile con `python3 build.py`, librerie incluse con le loro licenze.
-- Versioni indipendenti per strumento: tag `<strumento>-vX.Y.Z`.
+- Il file contiene l'applicazione e le librerie: non scarica nulla.
+- Una Content Security Policy impedisce al browser qualsiasi connessione di rete.
+- Si verifica staccando la rete o guardando la scheda *Rete* degli strumenti per sviluppatori.
+- Nel browser restano salvati solo piano e abbinamenti dei corsi, mai i dati della formazione.
 
-Licenza MIT.
+## Uso
+
+1. Scarica `dist/knowbe4-training-report.html` e aprilo con Chrome, Edge o Firefox.
+2. Carica l'export dettagliato di KnowBe4 (CSV o XLSX), una riga per corso assegnato.
+3. Imposta campagne, periodo, organi di gestione e piano.
+4. *Scarica report Excel* oppure *Copia sintesi testuale*.
+
+Definizioni delle metriche e regole di abbinamento: [docs/metrics.md](docs/metrics.md) (in inglese).
+
+Fa parte del repository [reports](../README.it.md). Licenza MIT. KnowBe4 è un marchio di KnowBe4, Inc.; il progetto è indipendente e non affiliato.
