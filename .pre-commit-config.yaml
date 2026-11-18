@@ -1,0 +1,15 @@
+repos:
+  - repo: https://github.com/gitleaks/gitleaks
+    rev: v8.21.2
+    hooks:
+      - id: gitleaks
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+    hooks:
+      - id: check-added-large-files
+        args: ["--maxkb=3000"]   # vendored libraries and dist/ are ~1-2 MB
+      - id: end-of-file-fixer
+        exclude: (^|/)(vendor|dist)/
+      - id: trailing-whitespace
+        exclude: (^|/)(vendor|dist)/
+      - id: check-yaml
